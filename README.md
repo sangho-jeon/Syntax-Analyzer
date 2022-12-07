@@ -12,3 +12,7 @@
 5. IDENT → any names conforming to the C identifier standard
 6. PRINT = "print_ari"
 7. SEMI_COLON = ";"
+
+## Implementation Method
+### Dynamic Scope Language. *(Access Type : Deep Accees)*
+

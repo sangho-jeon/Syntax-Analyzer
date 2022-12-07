@@ -36,14 +36,14 @@ public class LexicalAnalyzer { // lexical analyzing class.
                     tokensOfLine.add(new Token(type, token));
 
 
-                    if (Objects.equals(token, ";")) {
+                    if (Objects.equals(token, "}")) {
                         lexims.add(tokensOfLine);
                         tokensOfLine = new LinkedList<>();
                     }
                 }
             }
             if (!tokensOfLine.isEmpty()) {
-                Token semiColon = new Token(NextToken.SEMI_COLON, ";");
+                Token semiColon = new Token(NextToken.SEMI_COLON, "}");
                 if (!tokensOfLine.contains(semiColon)) {
                     tokensOfLine.add(semiColon);
                 }
