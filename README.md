@@ -3,7 +3,7 @@
 
 ---
 
-## Token Type
+## Util.Token Type
 
 1. LEFT_BRACE = "{"
 2. RIGHT_BRACE = "}"

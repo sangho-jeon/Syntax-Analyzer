@@ -1,4 +1,6 @@
-public enum NextToken { // Token enum type.
+package Util;
+
+public enum NextToken { // Util.Token enum type.
     IDENT,
     SEMI_COLON,
     LEFT_BRACE,

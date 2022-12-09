@@ -1,4 +1,6 @@
-public class Token { // Token class. contains type and value;
+package Util;
+
+public class Token { // Util.Token class. contains type and value;
     private final NextToken token_type;
     private final String value;
 
