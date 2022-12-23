@@ -8,4 +8,8 @@ public class Word{ // word that goes into ari stack;
         this.wordName = wordName;
         this.value = value;
     }
+
+    public void out(){
+        System.out.println(wordName + " " + value);
+    }
 }

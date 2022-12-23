@@ -37,17 +37,23 @@ public class SyntaxAnalyzer { // analyzing syntax for this code.
         if (iterator.next().getToken_type() != NextToken.LEFT_BRACE) {
             throw new IllegalArgumentException("Syntax Error");
         } else {
+            int count = 0;
             while (iterator.hasNext()) {
+                count++;
+                // Todo 조건 확인하고 count update 하는 부분 수정해야함.
                 Token nextToken = iterator.next();
                 if (nextToken.getToken_type() == NextToken.VARIABLE) {
-                    function.add(getVarDefinition(iterator));
+                    function.add(getVarDefinition(iterator, count));
                 } else if (nextToken.getToken_type() == NextToken.CALL) {
-                    function.add(getCallStatement(iterator));
+                    function.add(getCallStatement(iterator, count));
                 } else if (nextToken.getToken_type() == NextToken.IDENT) {
                     ArrayList<Token> result = new ArrayList<>();
                     result.add(nextToken);
-                    function.add(new Statement(STATEMENT_TYPE.REFERENCE, result));
-                } else if (nextToken.getToken_type() == NextToken.RIGHT_BRACE) {
+                    function.add(new Statement(STATEMENT_TYPE.REFERENCE, result, count));
+                } else if(nextToken.getToken_type() == NextToken.PRINT){
+                    function.add(new Statement(STATEMENT_TYPE.PRINT, new ArrayList<>(), count));
+                }
+                else if (nextToken.getToken_type() == NextToken.RIGHT_BRACE) {
                     break;
                 } else if (nextToken.getToken_type() == NextToken.LEFT_BRACE) {
                     throw new IllegalArgumentException("Syntax ERROR");
@@ -57,7 +63,7 @@ public class SyntaxAnalyzer { // analyzing syntax for this code.
         return new Function(function);
     }
 
-    private Statement getVarDefinition(Iterator<Token> iterator) {
+    private Statement getVarDefinition(Iterator<Token> iterator, int count) {
         ArrayList<Token> stateLine = new ArrayList<>();
         while (true) {
             Token nextToken = iterator.next();
@@ -75,13 +81,13 @@ public class SyntaxAnalyzer { // analyzing syntax for this code.
                 throw new IllegalArgumentException("Syntax Error");
             }
         }
-        return new Statement(STATEMENT_TYPE.VAR_DEF, stateLine);
+        return new Statement(STATEMENT_TYPE.VAR_DEF, stateLine, count);
     }
 
-    private Statement getCallStatement(Iterator<Token> iterator) {
+    private Statement getCallStatement(Iterator<Token> iterator, int count) {
         ArrayList<Token> result = new ArrayList<>();
         result.add(iterator.next());
-        return new Statement(STATEMENT_TYPE.CALL, result);
+        return new Statement(STATEMENT_TYPE.CALL, result, count);
     }
 
 

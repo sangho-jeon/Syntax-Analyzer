@@ -1,13 +1,15 @@
 package Util;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.List;
 import java.util.Stack;
 
 public class ARI{
-    public Stack<Word> wordStack;
+    public Deque<Word> wordStack;
 
     public ARI(){
-        this.wordStack = new Stack<>();
+        this.wordStack = new ArrayDeque<>();
     }
 
     public void pushReturnAddress(String value){

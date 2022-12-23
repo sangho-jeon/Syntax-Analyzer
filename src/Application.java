@@ -14,7 +14,7 @@ public class Application {
             lexicalAnalyzer.setFilePath(arg);
             SyntaxAnalyzer syntaxAnalyzer = new SyntaxAnalyzer(lexicalAnalyzer.analyze());
             Interpreter interpreter = new Interpreter(syntaxAnalyzer.analyze());
-            interpreter.out();
+//            interpreter.out();
             interpreter.run();
         }
     }
