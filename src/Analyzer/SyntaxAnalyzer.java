@@ -29,6 +29,7 @@ public class SyntaxAnalyzer { // analyzing syntax for this code.
                 functionSet.put(id.getToken_value(), getFunction(iterator));
             }
         }
+        System.out.println("Syntax O.K.\n");
         return functionSet;
     }
 

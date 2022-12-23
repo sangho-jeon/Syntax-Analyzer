@@ -7,9 +7,11 @@ import java.util.Stack;
 
 public class ARI{
     public Deque<Word> wordStack;
+    public String functionName;
 
-    public ARI(){
+    public ARI(String functionName){
         this.wordStack = new ArrayDeque<>();
+        this.functionName = functionName;
     }
 
     public void pushReturnAddress(String value){
@@ -27,7 +29,7 @@ public class ARI{
     public void out(){
         for (Word t:
              wordStack) {
-            System.out.println(t);
+            System.out.println(t.wordName + " " + t.value);
         }
     }
 }
